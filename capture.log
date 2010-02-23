@@ -1,0 +1,35 @@
+tim@TimBook:~$ mount_webdav -i http://127.0.0.1:8080/ webdav
+Username: admin
+Password: 
+tim@TimBook:~$ cd webdav/
+tim@TimBook:~/webdav$ ls
+README.md*      _user/          dev/            index.html*     sling-logo.png* sling.css*      templates/
+_group/         apps/           devwidgets/     sites/          sling-test/     system/         var/
+tim@TimBook:~/webdav$ touch TEST_FILE
+tim@TimBook:~/webdav$ vi TEST_FILE 
+tim@TimBook:~/webdav$ ls 
+README.md*      _group/         apps/           devwidgets/     sites/          sling-test/     system/         var/
+TEST_FILE*      _user/          dev/            index.html*     sling-logo.png* sling.css*      templates/
+tim@TimBook:~/webdav$ ls -lh
+total 70
+-rwx------  1 tim  staff   812B Feb 23 09:35 README.md*
+-rwx------  1 tim  staff    13B Feb 23 15:04 TEST_FILE*
+drwx------  1 tim  staff   2.0K Feb 23 15:06 _group/
+drwx------  1 tim  staff   2.0K Feb 23 15:06 _user/
+drwx------  1 tim  staff   2.0K Feb 23 15:06 apps/
+drwx------  1 tim  staff   2.0K Feb 23 15:06 dev/
+drwx------  1 tim  staff   2.0K Feb 23 15:06 devwidgets/
+-rwx------  1 tim  staff   3.0K Feb 23 09:34 index.html*
+drwx------  1 tim  staff   2.0K Feb 23 15:06 sites/
+-rwx------  1 tim  staff   6.1K Feb 23 09:34 sling-logo.png*
+drwx------  1 tim  staff   2.0K Feb 23 15:06 sling-test/
+-rwx------  1 tim  staff   3.2K Feb 23 09:34 sling.css*
+drwx------  1 tim  staff   2.0K Feb 23 15:06 system/
+drwx------  1 tim  staff   2.0K Feb 23 15:06 templates/
+drwx------  1 tim  staff   2.0K Feb 23 15:06 var/
+tim@TimBook:~/webdav$ mv TEST_FILE TEST_FILE2
+tim@TimBook:~/webdav$ rm TEST_FILE
+rm: TEST_FILE: No such file or directory
+tim@TimBook:~/webdav$ rm TEST_FILE2 
+tim@TimBook:~/webdav$ cd ..
+tim@TimBook:~$ umount webdav
