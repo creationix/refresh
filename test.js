@@ -21,25 +21,6 @@ function get_props(xml) {
 
 function propfind(props, callback) {
   
-  <?xml version="1.0" encoding="UTF-8"?>
-  <D:multistatus xmlns:D="DAV:">
-    <D:response>
-      <D:href>http://127.0.0.1:8080/</D:href>
-      <D:propstat>
-        <D:prop>
-          <D:resourcetype><D:collection/></D:resourcetype>
-          <D:getlastmodified>Tue, 23 Feb 2010 21:02:41 GMT</D:getlastmodified>
-        </D:prop>
-        <D:status>HTTP/1.1 200 OK</D:status>
-      </D:propstat>
-      <D:propstat>
-        <D:prop>
-          <D:getcontentlength/>
-        </D:prop>
-        <D:status>HTTP/1.1 404 Not Found</D:status>
-      </D:propstat>
-    </D:response>
-  </D:multistatus>
   
 }
 
