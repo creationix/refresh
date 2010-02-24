@@ -16,7 +16,7 @@ var Handlers = {
   OPTIONS: function (req, res, xml) {
     res.writeHeader(200, {
       Dav: "1",
-      Allow: Handlers.join(', '),
+      Allow: Object.keys(Handlers).join(', '),
     });
     res.close();
   }
@@ -25,7 +25,8 @@ var Handlers = {
 http.createServer(function (req, res) {
   var close = res.close;
   res.close = function () {
-    puts(req.connection.remoteAddress + " - - [" + (new Date()) + "] \"" + req.method + " " + req.url + " HTTP/" + req.httpVersionMajor + "." + req.httpVersionMinor + " " + res.statusCode + " " + res.output[0].length);
+    // Common Log Format (mostly)
+    puts(req.connection.remoteAddress + " - - [" + (new Date()).toUTCString() + "] \"" + req.method + " " + req.url + " HTTP/" + req.httpVersionMajor + "." + req.httpVersionMinor + "\" " + res.statusCode + " " + res.output[0].length + " \"" + (req.headers['referrer'] || "") + "\" \"" + req.headers["user-agent"] + "\"");
     return close.apply(res, arguments);
   }
   var writeHeader = res.writeHeader;
@@ -55,3 +56,7 @@ http.createServer(function (req, res) {
   }
 }).listen(6543);
 puts("SERVER STARTED ON http://127.0.0.1:6543/");
+
+process.addListener("uncaughtException", function (err) {
+  error(err.stack);
+});
